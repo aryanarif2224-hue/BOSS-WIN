@@ -1,0 +1,19 @@
+<?php
+// GetGameCategoryList — Shreewin-compatible response served LOCALLY (captured from Shreewin
+// production data, no runtime dependency on api.shreewinapi.com).
+header('Content-Type: application/json; charset=utf-8');
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '*';
+header('Access-Control-Allow-Origin: ' . $origin);
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization, AR-REAL-IP');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
+$f = __DIR__ . '/../../shreewin_data/GetGameCategoryList.json';
+if (!is_file($f)) {
+    http_response_code(500);
+    echo json_encode(['code'=>500,'msg'=>'config missing','msgCode'=>500]);
+    exit;
+}
+$d = json_decode(file_get_contents($f), true);
+if (isset($d['serviceNowTime'])) $d['serviceNowTime'] = date('Y-m-d H:i:s');
+echo json_encode($d, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);

@@ -1,0 +1,114 @@
+<?php 
+header('Content-Type: application/json; charset=utf-8');
+header('Strict-Transport-Security: max-age=31536000');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization');
+header('Access-Control-Allow-Credentials: true');
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+header('Access-Control-Allow-Origin: ' . $origin);
+header('vary: Origin');
+
+date_default_timezone_set("Asia/Kolkata");
+$shnunc = date("Y-m-d H:i:s");
+
+include __DIR__ . '/../../conn.php';
+
+// Base Shreewin Activity banners corresponding to the Home banners
+$activityBanners = [
+    [
+        'bannerTitle' => 'Invitation Bonus',
+        'bannerID' => 62,
+        'bannerUrl' => 'https://ossimg.shreewinpay.com/shreewin/banner/Banner_2026090311573543nt.png',
+        'jumpType' => 2,
+        'contents' => '/main/InvitationBonus',
+        'accessAuthType' => 0,
+    ],
+    [
+        'bannerTitle' => 'New Member Package',
+        'bannerID' => 77,
+        'bannerUrl' => 'https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260829150426dgnd.png',
+        'jumpType' => 2,
+        'contents' => '/activity/MemberPackage',
+        'accessAuthType' => 0,
+    ],
+    [
+        'bannerTitle' => 'Daily Sign In',
+        'bannerID' => 156,
+        'bannerUrl' => 'https://ossimg.shreewinpay.com/shreewin/banner/Banner_202608281325501bgp.png',
+        'jumpType' => 2,
+        'contents' => '/activity/DailySignIn',
+        'accessAuthType' => 0,
+    ],
+    [
+        'bannerTitle' => 'Daily Tasks',
+        'bannerID' => 53,
+        'bannerUrl' => 'https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260828132524mlb8.png',
+        'jumpType' => 2,
+        'contents' => '/activity/DailyTasks',
+        'accessAuthType' => 0,
+    ],
+    [
+        'bannerTitle' => 'First Deposit Bonus',
+        'bannerID' => 59,
+        'bannerUrl' => 'https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260828132503ryvl.png',
+        'jumpType' => 2,
+        'contents' => '/activity/FirstRecharge',
+        'accessAuthType' => 0,
+    ],
+    [
+        'bannerTitle' => 'Super Jackpot',
+        'bannerID' => 45,
+        'bannerUrl' => 'https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260828132542mg9k.png',
+        'jumpType' => 2,
+        'contents' => '/main/SuperJackpot',
+        'accessAuthType' => 0,
+    ],
+    [
+        'bannerTitle' => 'Lucky Spin Wheel',
+        'bannerID' => 72,
+        'bannerUrl' => 'https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260829185621d4ia.jpg',
+        'jumpType' => 2,
+        'contents' => '/activity/turntable',
+        'accessAuthType' => 0,
+    ]
+];
+
+// If admin has configured banners in site_home_banners, merge/use them
+if ($conn) {
+    $q = $conn->query("SELECT title, image_url, link_url, sort FROM site_home_banners WHERE active = 1 ORDER BY sort ASC, id ASC");
+    if ($q && $q->num_rows > 0) {
+        $dbBanners = [];
+        $idCounter = 200;
+        while ($r = $q->fetch_assoc()) {
+            $link = $r['link_url'] ? preg_replace('/^#/', '', $r['link_url']) : '/activity';
+            $dbBanners[] = [
+                'bannerTitle' => $r['title'],
+                'bannerID' => $idCounter++,
+                'bannerUrl' => $r['image_url'],
+                'jumpType' => 2,
+                'contents' => $link,
+                'accessAuthType' => 0,
+            ];
+        }
+        if (!empty($dbBanners)) {
+            $activityBanners = $dbBanners;
+        }
+    }
+}
+
+$res = [
+    'data' => [
+        'list' => $activityBanners,
+        'pageNo' => 1,
+        'totalPage' => 1,
+        'totalCount' => count($activityBanners),
+    ],
+    'code' => 0,
+    'msg' => 'Succeed',
+    'msgCode' => 0,
+    'traceId' => '',
+    'serviceNowTime' => $shnunc,
+];
+
+http_response_code(200);
+echo json_encode($res, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+?>
