@@ -1,0 +1,99 @@
+{
+  "data": [
+    {
+      "url": "/#/main/InvitationBonus",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_2026090311573543nt.png",
+      "categoryType": 0,
+      "jumpLinkType": 0,
+      "vendorCode": "",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    },
+    {
+      "url": "/#/activity/MemberPackage",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260829150426dgnd.png",
+      "categoryType": 0,
+      "jumpLinkType": 0,
+      "vendorCode": "",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    },
+    {
+      "url": "/#/activity/DailySignIn",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_202608281325501bgp.png",
+      "categoryType": 0,
+      "jumpLinkType": 0,
+      "vendorCode": "",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    },
+    {
+      "url": "/#/activity/DailyTasks",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260828132524mlb8.png",
+      "categoryType": 0,
+      "jumpLinkType": 0,
+      "vendorCode": "",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    },
+    {
+      "url": "/#/activity/FirstRecharge",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260828132503ryvl.png",
+      "categoryType": 0,
+      "jumpLinkType": 0,
+      "vendorCode": "",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    },
+    {
+      "url": "",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260829185621d4ia.jpg",
+      "categoryType": 0,
+      "jumpLinkType": 0,
+      "vendorCode": "",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    },
+    {
+      "url": "",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_2026090112405167cu.jpg",
+      "categoryType": 2,
+      "jumpLinkType": 1,
+      "vendorCode": "ARBET",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    },
+    {
+      "url": "",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260831125037m1jy.jpg",
+      "categoryType": 2,
+      "jumpLinkType": 1,
+      "vendorCode": "ARBET",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    },
+    {
+      "url": "/#/main/SuperJackpot",
+      "bannerUrl": "https://ossimg.shreewinpay.com/shreewin/banner/Banner_20260828132542mg9k.png",
+      "categoryType": 0,
+      "jumpLinkType": 0,
+      "vendorCode": "",
+      "gameCode": "",
+      "gameNameEn": "",
+      "accessAuthType": 0
+    }
+  ],
+  "code": 0,
+  "msg": "Succeed",
+  "msgCode": 0,
+  "traceId": "",
+  "serviceNowTime": "2026-09-08 16:04:17"
+}
